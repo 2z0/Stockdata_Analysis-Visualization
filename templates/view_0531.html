@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+</head>
+<body>
+상한가 종목 순위
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">순위</th>
+        <th scope="col">종목명</th>
+        <th scope="col">등락률</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">1</th>
+        <td>삼성제약</td>
+        <td>+29.8%</td>
+
+    </tr>
+    <tr>
+        <th scope="row">2</th>
+        <td>남양유업</td>
+        <td>+29.84%</td>
+
+    </tr>
+    <tr>
+        <th scope="row">3</th>
+        <td>남양유업우</td>
+        <td>+29.92%</td>
+
+    </tr>
+    </tbody>
+</table>
+<figure class="highcharts-figure">
+    <div id="container"></div>
+</figure>
+<script src="/js/down.js"></script>
+시가총액 상위
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">순위</th>
+        <th scope="col">종목명</th>
+        <th scope="col">시총규모</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="siga: ${sigaList}">
+
+        <td scope="row">1</td>
+        <td th:text="${siga.company}">종목명</td>
+        <td th:text="${siga.siga}">시총규모</td>
+
+    </tr>
+
+    </tbody>
+</table>
+<figure class="highcharts-figure">
+    <div id="contain"></div>
+</figure>
+<script src="/js/downt.js"></script>
+</body>
+</html>
