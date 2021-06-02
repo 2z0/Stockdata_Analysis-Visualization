@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/styles.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+    <script src="https://code.highcharts.com/modules/cylinder.js"></script>
+    <script src="https://code.highcharts.com/highcharts-more.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+</head>
+<body>
+
+<div class="col-xl-3 col-md-6 mb-4">
+    <div class="card border-left-primary shadow h-100 py-2">
+        <div class="card-body">
+            <div class="row no-gutters align-items-center">
+                <div class="col mr-2">
+                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        Earnings (Monthly)</div>
+                    <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                </div>
+                <div class="col-auto">
+                    <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br><br><br>
+
+10000원 이하 주식 (시가총액 큰 순서로 나열)
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">종목명</th>
+        <th scope="col">현재가</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="ten: ${priceten}">
+        <td th:text="${ten.company}">종목명</td>
+        <td th:text="${ten.price}">시총규모</td>
+
+    </tr>
+
+    </tbody>
+</table>
+
+오늘의 거래량 TOP 10
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">종목명</th>
+        <th scope="col">거래량</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="volume: ${volumeList}">
+    <td th:text="${volume.company}">종목명</td>
+    <td th:text="${volume.volume}">시총규모</td></tr>
+    </tbody>
+</table>
+
+<figure class="highcharts-figure">
+    <div id="container"></div>
+    <script src="/js/down.js"></script>
+    <button id="plain">세로차트</button>
+    <button id="inverted">가로차트</button>
+    <button id="polar">원형차트</button>
+
+</figure>
+
+시가총액 상위
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">종목명</th>
+        <th scope="col">시총규모</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="siga: ${sigaList}">
+
+
+        <td th:text="${siga.company}">종목명</td>
+        <td th:text="${siga.siga}">시총규모</td>
+
+    </tr>
+
+    </tbody>
+</table>
+<figure class="highcharts-figure">
+    <div id="contain" style="height:500px;"></div>
+    <script src="/js/downt.js"></script>
+</figure>
+
+</body>
+</html>
